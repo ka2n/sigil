@@ -18,7 +18,7 @@ import (
 
 	"github.com/dustin/go-jsonpointer"
 	"github.com/flynn/go-shlex"
-	"github.com/gliderlabs/sigil"
+	"github.com/ka2n/sigil"
 	"github.com/jmespath/go-jmespath"
 	"gopkg.in/yaml.v2"
 )

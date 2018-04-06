@@ -1,6 +1,6 @@
 NAME=sigil
 ARCH=$(shell uname -m)
-ORG=gliderlabs
+ORG=ka2n
 VERSION=0.4.0
 
 build:
