@@ -4,7 +4,7 @@ ORG=gliderlabs
 VERSION=0.4.0
 
 build:
-	glu build darwin,linux ./cmd
+	glu build darwin,linux ./cmd/sigil
 
 test:
 	basht tests/*.bash
