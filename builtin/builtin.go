@@ -31,18 +31,20 @@ func init() {
 		"var":     Var,
 		"fail":    Fail,
 		// strings
-		"capitalize": Capitalize,
-		"lower":      Lower,
-		"upper":      Upper,
-		"replace":    Replace,
-		"trim":       Trim,
-		"indent":     Indent,
-		"match":      Match,
-		"render":     Render,
-		"stdin":      Stdin,
-		"substr":     Substring,
-		"base64enc":  Base64Encode,
-		"base64dec":  Base64Decode,
+		"capitalize":   Capitalize,
+		"lower":        Lower,
+		"upper":        Upper,
+		"replace":      Replace,
+		"trim":         Trim,
+		"indent":       Indent,
+		"match":        Match,
+		"render":       Render,
+		"stdin":        Stdin,
+		"substr":       Substring,
+		"base64enc":    Base64Encode,
+		"base64dec":    Base64Decode,
+		"base64encstr": Base64EncodeString,
+		"base64decstr": Base64DecodeString,
 		// filesystem
 		"file":   File,
 		"exists": Exists,
@@ -290,6 +292,10 @@ func Base64Encode(file interface{}) (interface{}, error) {
 	return base64.StdEncoding.EncodeToString(f), nil
 }
 
+func Base64EncodeString(in string) (interface{}, error) {
+	return base64.StdEncoding.EncodeToString([]byte(in)), nil
+}
+
 func Base64Decode(file interface{}) (interface{}, error) {
 	f, err := read(file)
 	if err != nil {
@@ -300,6 +306,10 @@ func Base64Decode(file interface{}) (interface{}, error) {
 		return nil, err
 	}
 	return string(decoded), nil
+}
+
+func Base64DecodeString(in string) (interface{}, error) {
+	return base64.StdEncoding.DecodeString(in)
 }
 
 func Json(file interface{}) (interface{}, error) {
