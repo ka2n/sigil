@@ -3,24 +3,22 @@ ARCH=$(shell uname -m)
 ORG=ka2n
 VERSION=0.4.0
 
-build:
-	glu build darwin,linux ./cmd/sigil
-
 test:
 	basht tests/*.bash
 
-install: build
-	install build/$(shell uname -s)/sigil /usr/local/bin
-
 deps:
-	go get github.com/gliderlabs/glu
+	go get -u github.com/Songmu/goxz/cmd/goxz
+	go get -u github.com/tcnksm/ghr
 	go get -u github.com/progrium/basht/...
-	go get -d ./cmd
+	go get -d ./cmd/sigil
+
+build:
+	goxz -pv $(VERSION) -os=linux,darwin -arch=amd64 -d ./release ./cmd/sigil
 
 release:
-	glu release v$(VERSION)
+	ghr $(VERSION) ./release
 
 clean:
-	rm -rf build release
+	rm -rf release
 
-.PHONY: build release
+.PHONY: release build
