@@ -29,6 +29,7 @@ func init() {
 		"include": Include,
 		"default": Default,
 		"var":     Var,
+		"fail":    Fail,
 		// strings
 		"capitalize": Capitalize,
 		"lower":      Lower,
@@ -469,6 +470,10 @@ func Indent(indent string, in interface{}) (interface{}, error) {
 
 func Var(name string) interface{} {
 	return os.Getenv(name)
+}
+
+func Fail(message string, args ...interface{}) (interface{}, error) {
+	return nil, fmt.Errorf(message, args...)
 }
 
 func Match(pattern string, in interface{}) (bool, error) {
